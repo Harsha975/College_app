@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
+    tools:context=".HomeActivity">
+    <ImageView
+        android:id="@+id/idlogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/logo"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idlogo"
+        android:id="@+id/idheading"
+        android:layout_marginTop="28dp"
+        android:text="Welcome to QR code Scanner and \n Genetator"
+        android:textAlignment="center"
+        android:textColor="@color/yellow"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/button_back"
+        android:text="Generate QR code"
+        android:textAllCaps="false"
+        android:layout_below="@id/idheading"
+        android:id="@+id/idGenButton"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/button_back"
+        android:text="Scan QR code"
+        android:textAllCaps="false"
+        android:layout_below="@id/idGenButton"
+        android:id="@+id/idScanButton"/>
+
+</RelativeLayout>
