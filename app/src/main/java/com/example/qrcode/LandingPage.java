@@ -7,22 +7,32 @@ import android.widget.Button;
 import android.os.Bundle;
 
 public class LandingPage extends AppCompatActivity {
-    Button loginStd;
-    Button loginFact;
+    Button loginfact;
+    Button loginstd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
-        loginStd=findViewById(R.id.btn1);
-        loginFact=findViewById(R.id.btn22);
-
-        loginStd.setOnClickListener(new View.OnClickListener() {
+        loginfact=findViewById(R.id.btn2);
+        loginstd=findViewById(R.id.btn1);
+        loginfact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LandingPage.this,StudentLogin.class);
-                startActivity(intent);
+                Intent i = new Intent(LandingPage.this,FacultyLogin.class);
+                startActivity(i);
             }
 
         });
+
+        loginstd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LandingPage.this,StudentLogin.class);
+                startActivity(i);
+            }
+
+        });
+
+
     }
 }

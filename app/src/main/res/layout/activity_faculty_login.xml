@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_shade_1"
-    tools:context=".StudentLogin">
+    tools:context=".FacultyLogin">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="146dp"
-        android:layout_height="56dp"
+        android:layout_width="165dp"
+        android:layout_height="74dp"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
@@ -29,7 +29,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
-        android:text="Login-Student"
+        android:text="Login-Faculty"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="25sp"
@@ -46,10 +46,10 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textAllCaps="false"
-        android:id="@+id/studentlogin"/>
+        android:id="@+id/facultylogin"/>
 
     <EditText
-        android:id="@+id/emailstd"
+        android:id="@+id/emailfact"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@id/idheading"
@@ -63,10 +63,10 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/passwordstd"
+        android:id="@+id/passwordfact"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_below="@id/emailstd"
+        android:layout_below="@id/emailfact"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20sp"
@@ -74,6 +74,6 @@
         android:inputType="textPassword"
         android:text="Name"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

@@ -7,19 +7,19 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 
-public class StudentLogin extends AppCompatActivity {
-    Button studentlogin;
-    EditText emailstud;
-    EditText passwordstud;
+public class FacultyLogin extends AppCompatActivity {
+    Button facultylogin;
+    EditText emailfact;
+    EditText passwordfact;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_login);
-        studentlogin=(Button)findViewById(R.id.studentlogin);
-        studentlogin.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_faculty_login);
+        facultylogin=(Button)findViewById(R.id.facultylogin);
+        facultylogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(StudentLogin.this,ScanQRCodeActivity.class);
+                Intent i = new Intent(FacultyLogin.this,GenerateQRCodeActivity.class);
                 startActivity(i);
             }
 
