@@ -12,18 +12,6 @@
         android:id="@+id/ifFqrcode"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp">
-        <TextView
-            android:id="@+id/idtvGenQR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="1dp"
-            android:padding="4dp"
-            android:text="Your Code will appear here"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
         <ImageView
             android:id="@+id/idIVQRCode"
             android:layout_width="250dp"
