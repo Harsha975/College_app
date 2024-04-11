@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_shade_1"
     tools:context=".ScanQRCodeActivity">
     <Button
         android:id="@+id/scnbtn"
@@ -14,8 +15,11 @@
         android:text="Scan"/>
     <TextView
         android:id="@+id/text"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/scnbtn"
+        android:visibility="gone"
+        android:textColor="@color/black"
         android:layout_marginTop="25dp"/>
 </RelativeLayout>

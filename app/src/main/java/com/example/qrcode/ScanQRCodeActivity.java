@@ -35,11 +35,11 @@ public class ScanQRCodeActivity extends AppCompatActivity {
         if (result != null) {
             String contents = result.getContents();
             if(contents!=null) {
+                textt.setVisibility(View.VISIBLE);
                 textt.setText(result.getContents());
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-
     }
 }
