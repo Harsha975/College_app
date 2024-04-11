@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/black_shade_1"
     tools:context=".GenerateQRCodeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:layout_margin="10dp"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:id="@+id/show_location"
+        />
+
     <FrameLayout
         android:layout_width="250dp"
         android:layout_height="wrap_content"

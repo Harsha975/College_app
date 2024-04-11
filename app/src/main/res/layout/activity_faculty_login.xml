@@ -7,6 +7,16 @@
     android:background="@color/black_shade_1"
     tools:context=".FacultyLogin">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:layout_margin="10dp"
+        android:textSize="10sp"
+        android:textColor="@color/white"
+        android:id="@+id/show_location"
+        />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="165dp"
