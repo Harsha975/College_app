@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "841523330868",
+    "project_id": "login-register-firebase-abb39",
+    "storage_bucket": "login-register-firebase-abb39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841523330868:android:6113b6b6eeaad1d32f2f61",
+        "android_client_info": {
+          "package_name": "com.example.mylogin_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRHoD7862korRHk79KXxYtdtq8jnLmNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841523330868:android:d753081ab74a44a12f2f61",
+        "android_client_info": {
+          "package_name": "com.example.qrcode"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyRHoD7862korRHk79KXxYtdtq8jnLmNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

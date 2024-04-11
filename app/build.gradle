@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.qrcode"
-        minSdk 24
+        minSdk 33
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -37,9 +38,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
     implementation 'com.google.zxing:core:3.4.1'
-
+    implementation 'com.google.firebase:firebase-auth:22.3.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.2'
     implementation 'androidx.multidex:multidex:2.0.1'
 }
+apply plugin: 'com.google.gms.google-services'
