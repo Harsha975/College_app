@@ -8,29 +8,61 @@
     tools:context=".ScanQRCodeActivity">
 
     <TextView
+        android:id="@+id/show_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Location"
         android:layout_margin="10dp"
         android:textSize="10sp"
-        android:id="@+id/show_location"
-        />
+        android:hint="Location" />
+
     <Button
         android:id="@+id/scnbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:layout_centerHorizontal="true"
-        android:text="Scan"/>
+        android:text="Scan" />
+
     <TextView
         android:id="@+id/text"
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/scnbtn"
+        android:layout_below="@id/scnbtn"
         android:visibility="gone"
+        android:background="@color/white"
         android:textColor="@color/black"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="25dp" />
 
+    <!-- New TextViews to display date and time -->
+    <TextView
+        android:id="@+id/dateres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/timeres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateres"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Button for marking attendance -->
+    <Button
+        android:id="@+id/mark_attendance_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeres"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Mark Attendance"
+        android:enabled="false" />
 
 </RelativeLayout>

@@ -19,18 +19,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
-import org.w3c.dom.Text;
-
 public class ScanQRCodeActivity extends AppCompatActivity {
-    Button btn ;
+    Button btn;
     TextView textt;
-    double latitudestud=0,longitudestud=0,latitudefact=0,longitudefact=0;
+    double latitudestud = 0, longitudestud = 0, latitudefact = 0, longitudefact = 0;
 
     private static final int REQUEST_LOCATION = 1;
 
     TextView showLocationTxt;
-    TextView resultfinal;
+
     LocationManager locationManager;
+
     private void getLocation() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -83,11 +82,12 @@ public class ScanQRCodeActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_qrcode);
-        btn=findViewById(R.id.scnbtn);
+        btn = findViewById(R.id.scnbtn);
         textt = findViewById(R.id.text);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
@@ -95,49 +95,61 @@ public class ScanQRCodeActivity extends AppCompatActivity {
         showLocationTxt = findViewById(R.id.show_location);
         getLocation();
 
-
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentIntegrator intentIntegrator = new IntentIntegrator(ScanQRCodeActivity.this);
                 intentIntegrator.setOrientationLocked(true);
-                intentIntegrator.setPrompt("scan qr code");
+                intentIntegrator.setPrompt("Scan QR Code");
                 intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
                 intentIntegrator.initiateScan();
             }
         });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             String contents = result.getContents();
 
-            if(contents!=null) {
-                System.out.println(contents);
-                latitudefact=Double.parseDouble(contents.split(",")[0]);
-                longitudefact=Double.parseDouble(contents.split(",")[1]);
-                System.out.print("latitudefact:"+latitudefact+"longitude"+longitudefact);
+            if (contents != null) {
+                String[] parts = contents.split(",");
+                double latitude = Double.parseDouble(parts[0]);
+                double longitude = Double.parseDouble(parts[1]);
+                String dateTime = parts[2];
+
+                String[] dateTimeParts = dateTime.split(" ");
+                String date = dateTimeParts[0];
+                String time = dateTimeParts[1];
+
+                // Set the date and time to respective TextViews
+                TextView dateTextView = findViewById(R.id.dateres);
+                TextView timeTextView = findViewById(R.id.timeres);
+                dateTextView.setText("Date: " + date);
+                timeTextView.setText("Time: " + time);
 
                 // Calculate distance between student's location and QR code location
                 float[] distance = new float[1];
-                Location.distanceBetween(latitudestud, longitudestud, latitudefact, longitudefact, distance);
+                Location.distanceBetween(latitudestud, longitudestud, latitude, longitude, distance);
 
                 // Display the distance
                 Toast.makeText(ScanQRCodeActivity.this, "Distance: " + distance[0] + " meters", Toast.LENGTH_SHORT).show();
 
+                // Enable or disable the "Mark Attendance" button based on distance
+                Button markAttendanceBtn = findViewById(R.id.mark_attendance_btn);
                 if (distance[0] < 3) {
                     // Attendance successful
                     textt.setVisibility(View.VISIBLE);
                     textt.setText("Attendance Successful");
+                    markAttendanceBtn.setEnabled(true);
                 } else {
                     // Attendance failed
                     textt.setVisibility(View.VISIBLE);
                     textt.setText("Attendance Failed");
+                    markAttendanceBtn.setEnabled(false);
+                    Toast.makeText(ScanQRCodeActivity.this, "Better luck next time with proxy!", Toast.LENGTH_SHORT).show();
                 }
-                // Set the scanned QR code content to the TextView
-
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
@@ -25,9 +28,6 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
-import androidmads.library.qrgenearator.QRGContents;
-import androidmads.library.qrgenearator.QRGEncoder;
 
 public class GenerateQRCodeActivity extends AppCompatActivity {
     private ImageView qrCodeIV;
@@ -42,6 +42,7 @@ public class GenerateQRCodeActivity extends AppCompatActivity {
 
         qrCodeIV = findViewById(R.id.idIVQRCode);
         showLocationTxt = findViewById(R.id.show_location);
+
         Button generateQRBtn = findViewById(R.id.idBtnGenerateQR);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
@@ -58,8 +59,10 @@ public class GenerateQRCodeActivity extends AppCompatActivity {
     }
 
     private void generateQRCode(double latitude, double longitude) {
-        // Combine latitude and longitude into a single string
-        String locationString =latitude+","+longitude;
+        // Combine latitude, longitude, and current date and time into a single string
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss z");
+        String currentDateAndTime = sdf.format(new Date());
+        String locationString = latitude + "," + longitude + "," + currentDateAndTime;
 
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
@@ -94,7 +97,6 @@ public class GenerateQRCodeActivity extends AppCompatActivity {
                     Location locationPassive = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 
                     Location location = locationGps != null ? locationGps : (locationNetwork != null ? locationNetwork : locationPassive);
-                    System.out.print("badaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+location);
                     if (location != null) {
                         double latitude = location.getLatitude();
                         double longitude = location.getLongitude();
@@ -142,7 +144,7 @@ public class GenerateQRCodeActivity extends AppCompatActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
                 } else {
-                    Toast.makeText(this, grantResults[0], Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
                 }
                 break;
             }

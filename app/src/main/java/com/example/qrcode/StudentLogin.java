@@ -21,17 +21,6 @@ public class StudentLogin extends AppCompatActivity {
     EditText emailstud;
     EditText passwordstud;
     FirebaseAuth mAuth;
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            Intent intent = new Intent(getApplicationContext(),StudentLogin.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +30,6 @@ public class StudentLogin extends AppCompatActivity {
         emailstud = findViewById(R.id.emailstd);
         passwordstud= findViewById(R.id.passwordstd);
         studentlogin=(Button)findViewById(R.id.studentlogin);
-
         studentlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
