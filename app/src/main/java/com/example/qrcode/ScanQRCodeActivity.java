@@ -19,14 +19,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
+import org.w3c.dom.Text;
+
 public class ScanQRCodeActivity extends AppCompatActivity {
     Button btn ;
     TextView textt;
-    double latitudestud=0,longitudestud=0;
+    double latitudestud=0,longitudestud=0,latitudefact=0,longitudefact=0;
+
     private static final int REQUEST_LOCATION = 1;
 
     TextView showLocationTxt;
-
+    TextView resultfinal;
     LocationManager locationManager;
     private void getLocation() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -86,6 +89,7 @@ public class ScanQRCodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scan_qrcode);
         btn=findViewById(R.id.scnbtn);
         textt = findViewById(R.id.text);
+
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
 
         showLocationTxt = findViewById(R.id.show_location);
@@ -112,11 +116,28 @@ public class ScanQRCodeActivity extends AppCompatActivity {
 
             if(contents!=null) {
                 System.out.println(contents);
-                double latitudefact=Double.parseDouble(contents.split(",")[0]);
-                double longitudefact=Double.parseDouble(contents.split(",")[1]);
+                latitudefact=Double.parseDouble(contents.split(",")[0]);
+                longitudefact=Double.parseDouble(contents.split(",")[1]);
                 System.out.print("latitudefact:"+latitudefact+"longitude"+longitudefact);
-                textt.setVisibility(View.VISIBLE);
-                textt.setText(result.getContents());
+
+                // Calculate distance between student's location and QR code location
+                float[] distance = new float[1];
+                Location.distanceBetween(latitudestud, longitudestud, latitudefact, longitudefact, distance);
+
+                // Display the distance
+                Toast.makeText(ScanQRCodeActivity.this, "Distance: " + distance[0] + " meters", Toast.LENGTH_SHORT).show();
+
+                if (distance[0] < 3) {
+                    // Attendance successful
+                    textt.setVisibility(View.VISIBLE);
+                    textt.setText("Attendance Successful");
+                } else {
+                    // Attendance failed
+                    textt.setVisibility(View.VISIBLE);
+                    textt.setText("Attendance Failed");
+                }
+                // Set the scanned QR code content to the TextView
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
