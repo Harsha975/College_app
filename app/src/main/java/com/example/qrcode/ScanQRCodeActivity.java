@@ -18,6 +18,7 @@ import android.provider.Settings;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
+import android.net.Uri;
 
 public class ScanQRCodeActivity extends AppCompatActivity {
     Button btn;
@@ -143,6 +144,37 @@ public class ScanQRCodeActivity extends AppCompatActivity {
                     textt.setVisibility(View.VISIBLE);
                     textt.setText("Attendance Successful");
                     markAttendanceBtn.setEnabled(true);
+
+                    // Redirect to an external link based on time range
+                    markAttendanceBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // Assuming the time range for redirection is between 9:00 AM to 5:00 PM
+                            String[] timeParts = time.split(":");
+                            int hour = Integer.parseInt(timeParts[0]);
+
+                            if (hour >= 22 && hour < 23) { // Check if current time is within the range
+                                // Redirect to external link
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/4rJcVMhwmLheUiBY9"));
+                                startActivity(browserIntent);
+                            } else if (hour >= 10 && hour < 12) { // Check if current time is within the range
+                                // Redirect to external link
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/D5K3qWyGeQDDMxw6A"));
+                                startActivity(browserIntent);
+                            } else  if (hour >= 13 && hour < 14) { // Check if current time is within the range
+                                // Redirect to external link
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/t3ptxDeX6WFLXA2w7"));
+                                startActivity(browserIntent);
+                            } else  if (hour >= 14 && hour < 16) { // Check if current time is within the range
+                                // Redirect to external link
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/wVdPVtM9FafvEXBd7"));
+                                startActivity(browserIntent);
+                            }else {
+                                // Display a message that redirection is not available at the current time
+                                Toast.makeText(ScanQRCodeActivity.this, "Redirection not available at the current time.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 } else {
                     // Attendance failed
                     textt.setVisibility(View.VISIBLE);

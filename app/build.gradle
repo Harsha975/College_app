@@ -6,7 +6,6 @@ plugins {
 android {
     namespace 'com.example.qrcode'
     compileSdk 34
-
     defaultConfig {
         applicationId "com.example.qrcode"
         minSdk 30
@@ -43,5 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.2'
     implementation 'androidx.multidex:multidex:2.0.1'
+//    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
+//    implementation'com.karumi:dexter:6.2.2'
 }
 apply plugin: 'com.google.gms.google-services'
