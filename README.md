@@ -1,4 +1,4 @@
-Title: Proximity-Verified Attendance App: Leveraging Android Studio and Java for Enhanced Student Accountability and Faculty Efficiency
+Proximity-Verified Attendance App: Leveraging Android Studio and Java for Enhanced Student Accountability and Faculty Efficiency
 
 Abstract:
 
@@ -8,4 +8,5 @@ Operating on a faculty-student model, faculty members generate unique QR codes f
 
 Furthermore, the application integrates a title table feature that seamlessly links to subject-specific Google Forms. Upon successful QR code verification, students gain access to the relevant Google Form for submitting assignments or feedback, enhancing classroom engagement and interaction.
 
-By harnessing the power of Android Studio and Java, the attendance app offers a user-friendly interface for both faculty and students, facilitating efficient attendance management and fostering a culture of accountability. This abstract outlines the technological framework and innovative functionalities of the app, providing a robust solution for educational institutions seeking to optimize attendance tracking while upholding academic integrity
+By harnessing the power of Android Studio and Java, the attendance app offers a user-friendly interface for both faculty and students, facilitating efficient attendance management and fostering a culture of accountability. This abstract outlines the technological framework and innovative functionalities of the app, providing a robust solution for educational institutions seeking to optimize attendance tracking while upholding academic integrity.
+
